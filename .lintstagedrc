@@ -1,0 +1,5 @@
+{
+  "./globalSrc/**/*.{js,jsx,ts,tsx,vue,less,sass,scss,css.json}": ["npm run lint"],
+  "./platform/**/*.{js,jsx,ts,tsx,vue,less,sass,scss,css.json}": ["npm run lint"],  
+  "./website/**/*.{js,jsx,ts,tsx,vue,less,sass,scss,css.json}": ["npm run lint"]
+}
