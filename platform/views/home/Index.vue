@@ -1,8 +1,8 @@
 <template>
-  <div>存放平台系统页面</div>
+  <div>首页</div>
 </template>
 <script>
 export default {
-  name: 'platformApp'
+  name: 'platformHome'
 }
 </script>

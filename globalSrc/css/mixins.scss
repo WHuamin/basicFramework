@@ -1,0 +1,36 @@
+// 容器大小
+@mixin wrapper($padding: $box-space-normal, $height: 100%, $width: 100%) {
+  width: $width;
+  height: $height;
+  padding: $padding;
+  // gap: $gap;
+}
+
+// 弹性容器
+@mixin flex-wrapper($direction: row, $justify: flex-start, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// 文字
+@mixin text(
+  $size: $text-size-regular,
+  $lineHeight: 4px,
+  $color: $text-color-regular,
+  $align: left,
+  $active: $text-color-primary,
+  $cursor: auto
+) {
+  font-size: $size;
+  line-height: calc($size + $lineHeight);
+  color: $color;
+  text-align: $align;
+  transition: color 0.2s;
+  cursor: $cursor;
+
+  &:hover {
+    color: $active;
+  }
+}

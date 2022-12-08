@@ -1,15 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
+import LayoutView from '../views/layout/Index.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
+  {
+    path: '/',
+    component: LayoutView,
+    children: [{
+      path: '',
+      name: 'home',
+      component: () => import(/* webpackChunkName: "home" */ '../views/home/Index.vue')
+    }]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/login/Index.vue')
+  }
   // {
   //   path: '/about',
   //   name: 'about',
