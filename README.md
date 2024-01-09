@@ -4,7 +4,7 @@
 node：v18.19.0
 pnpm:：v8.13.1
 
-## 初始代码
+## 1.初始代码
 1. 安装pnpm npm i -g pnpm
 2. 创建项目 pnpm create vite@latest 项目名称 -- --template 模板
 3. 配置 tsconfig， 修改 tsconfig.node.json
@@ -20,7 +20,7 @@ pnpm:：v8.13.1
 9. 配置 husky、lint-staged、@commitlint/cli
 
 
-## ESLint 和 prettier
+### ESLint 和 prettier
 1. eslint 安装 pnpm i eslint -D
 2. eslint vue插件安装 pnpm i eslint-plugin-vue -D
 3. eslint 识别ts语法 pnpm i @typescript-eslint/parser -D
@@ -34,7 +34,7 @@ pnpm:：v8.13.1
 重启vscode使配置生效
 8. vscode 保存自动格式化
 
-## husky、lint-staged、@commitlint/cli
+### husky、lint-staged、@commitlint/cli
 husky：一个为git客户端增加hook的工具
 lint-staged：仅对Git 代码暂存区文件进行处理，配合husky使用
 @commitlint/cli：让commit信息规范化
@@ -57,7 +57,7 @@ lint-staged：仅对Git 代码暂存区文件进行处理，配合husky使用
 5. 新建commitlint.config.cjs
 由于package.json的"type": "module"，需将commonjs文件显示声明为.cjs
 
-## Git 项目代码提交格式：
+### Git 项目代码提交格式：
 git commit -m <type>[optional scope]: <description> //注意冒号后面有空格
 - type：提交的类型（如新增、修改、更新等）
 - optional scope：涉及的模块，可选
@@ -76,7 +76,7 @@ test 	 增加测试，包括单元测试、集成测试等
 build  	 构建系统或外部依赖项的更改  
 ci  	 自动化流程配置或脚本修改
 
-## vscode 保存自动格式化
+### vscode 保存自动格式化
 在.vscode下新建 settings.json
 {
   "editor.codeActionsOnSave": {
@@ -85,7 +85,7 @@ ci  	 自动化流程配置或脚本修改
 }
 之后每次文件有修改，保存时，都会自动格式化
 
-## 配置路由
+## 2.配置路由
 1. 安装 pnpm i vue-router
 2. 在 src/router 上，定义路由（eg: router/routes.ts）， 创建路由实例(router/index.ts), 路由注册(main.ts)，定义路由出口（App.vue）
 3. 嵌套路由（eg: router/routes.ts）children
@@ -164,3 +164,33 @@ const UserDetails = () => import(/* webpackChunkName: "group-user" */ './UserDet
 
 ### 动态路由
 与动态路由匹配不同，动态路由是手动添加路由表中没有的路由，通常用在权限校验中，如果没有该权限，直接访问该路由失败
+
+## 3.配置pinia
+三大特点：
+1. 完整的 ts 支持
+2. 三大核心：state（存储的值），getters（计算属性），actions也可支持同步（改变值的方法，支持同步和异步）
+3. 与vuex相比，去除了mutations（actions也可支持同步）和modules（只有store之间的互相引用）
+
+1. 安装 pnpm i pinia
+2. 创建 pinia 实例（项目根目录下新建store文件夹，并创建index.ts文件）
+3. 在 main.ts 中引用
+4. 创建store
+    新建store/user.ts
+5. store 的相互引用
+    每个store可看做一个hook。相互引用即调用不同hook
+6. 路由钩子中使用store
+    使用store的前提是保证pinia已被注册
+7. 数据持久化
+    安装插件 pnpm i pinia-plugin-persistedstate
+    引用插件：修改 store/index.ts
+    在store模块中启用持久化：在user.ts中启用：添加persist配置项，当更新state值时，会默认存储到localStorage中
+    修改key与存储位置：
+    //将persist: true,改为
+    persist: {
+        key: 'storekey', // 修改存储的键名，默认为当前 Store 的 id
+        storage: window.sessionStorage, // 存储位置修改为 sessionStorage
+    },
+    自定义要持久化的字段：默认会将store中的所有字段都缓存，可以通过paths点符号路径数组指定要缓存的字段
+    persist: {
+        paths: ['userInfo.name'], //存储userInfo的name
+    },
