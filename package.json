@@ -11,7 +11,8 @@
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx --max-warnings 0"
   },
   "dependencies": {
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
@@ -37,5 +38,4 @@
       "prettier --write"
     ]
   }
-
 }
