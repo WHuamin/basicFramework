@@ -194,3 +194,31 @@ const UserDetails = () => import(/* webpackChunkName: "group-user" */ './UserDet
     persist: {
         paths: ['userInfo.name'], //存储userInfo的name
     },
+
+## 4d.配置分环境打包
+1. 建文件
+开发环境 .env.development
+测试环境 .env.test
+生产环境 .env.production
+
+## 5.配置封装axios
+1. 安装 pnpm i axios
+2. 封装axios(src/api/request/axios.ts)
+3. 项目的api都放在 src/api 目录下
+eg：src/api/common/url.ts 存放api路径
+    src/api/common/types.ts 存放数据参数/响应数据类型
+    src/api/common/index.ts 存放api
+
+## 6.配置mockjs
+1. 安装 pnpm i -D mockjs
+2. 安装 pnpm i -D vite-plugin-mock
+3. 建模拟数据（src/mock/source）
+4. 配置引入mockjs（vite.config.ts）
+    具体见./build/vite/plugins.ts文件
+
+## 配置 vue函数的自动导入 - 待处理
+如ref, computed，watch等就不用手动导入：
+pnpm install unplugin-auto-import -D
+
+解决vue3下 script setup语法糖 下 ，手动设置组件name不方便的问题：
+pnpm install vite-plugin-vue-setup-extend -D
