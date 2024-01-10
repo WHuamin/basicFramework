@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/store/user';
-import commonApis from '@/api/common';
+// import commonApis from '@/api/common';
+import userApis from '@/api/user';
 
 const userStore = useUserStore();
 //storeToRefs 会跳过所有的 action 属性
@@ -25,16 +26,31 @@ const handleToken = () => {
 };
 
 const test = ref('');
-commonApis
-  .logout()
-  .then((res) => {
-    // console.log('结果', res);
-    test.value = res.sodar_query_id;
-  })
-  .catch((err) => {
-    // console.log(err);
-    test.value = err;
-  });
+// commonApis
+//   .logout()
+//   .then((res) => {
+//     // console.log('结果', res);
+//     test.value = res.sodar_query_id;
+//   })
+//   .catch((err) => {
+//     // console.log(err);
+//     test.value = err;
+//   });
+onMounted(() => {
+  userApis
+    .userList({
+      account: '123',
+      password: '1233',
+    })
+    .then((res) => {
+      // console.log('结果', res);
+      test.value = res;
+    })
+    .catch((err) => {
+      test.value = err;
+      // console.log('结果err', err);
+    });
+});
 </script>
 
 <template>

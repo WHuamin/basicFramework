@@ -39,11 +39,18 @@ class BasicRequest {
         if (res.status == 200) {
           return res.data;
         } else {
-          return res;
+          return Promise.reject(res);
         }
       },
       (err) => {
-        return err;
+        if (['ERR_NETWORK', 'ERR_BAD_REQUEST'].includes(err.code)) {
+          return Promise.reject({
+            code: err.code,
+            message: err.message,
+          });
+        } else {
+          return Promise.reject(err);
+        }
       },
     );
   }

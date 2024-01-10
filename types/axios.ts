@@ -27,6 +27,7 @@ export interface BasicAxiosRequest extends AxiosRequestConfig {
   // 是否展示请求加载状态
   showLoading?: boolean;
 }
+
 export interface BasicInternalAxiosRequestConfig extends InternalAxiosRequestConfig {
   // token 前缀
   tokenPrefix?: string;

@@ -1,5 +1,5 @@
 // 接口url
 export enum LoginAPI {
-  login = '/login',
+  login = '/test',
   logout = '/logout',
 }
