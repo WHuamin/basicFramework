@@ -3,7 +3,10 @@
   <router-view v-slot="{ Component }">
     <!-- Transition 是基于路由的动态过渡动效 -->
     <Transition name="fade" mode="out-in">
-      <component :is="Component" />
+      <!-- <Transition>中的组件不能呈现动画的非元素根节点。 也就是说，Transition包裹的必须是一个单根的组件。所以要包裹一个div -->
+      <div :key="$route.path">
+        <component :is="Component" />
+      </div>
     </Transition>
   </router-view>
 </template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/store/user';
+import commonApis from '@/api/common';
 
 const userStore = useUserStore();
 //storeToRefs 会跳过所有的 action 属性
@@ -21,6 +23,18 @@ const handleAge = () => {
 const handleToken = () => {
   updateToken('23234');
 };
+
+const test = ref('');
+commonApis
+  .logout()
+  .then((res) => {
+    // console.log('结果', res);
+    test.value = res.sodar_query_id;
+  })
+  .catch((err) => {
+    // console.log(err);
+    test.value = err;
+  });
 </script>
 
 <template>
