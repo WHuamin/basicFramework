@@ -222,3 +222,8 @@ pnpm install unplugin-auto-import -D
 
 解决vue3下 script setup语法糖 下 ，手动设置组件name不方便的问题：
 pnpm install vite-plugin-vue-setup-extend -D
+
+## WEB端 - 引入 elementplus 框架
+1. 引入elementplus 框架：pnpm install element-plus
+2. 自动导入： pnpm install -D unplugin-vue-components unplugin-auto-import
+3. 配置（vite.config.ts）
