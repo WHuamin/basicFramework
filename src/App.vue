@@ -14,14 +14,14 @@
 <script setup lang="ts">
 import { watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { manageRoute } from '@/router/routes';
+import manageRoutes from '@/router/modules/manage';
 
 const router = useRouter();
 const route = useRoute();
 watch(route, async (newVal) => {
   const role = localStorage.getItem('role');
   if (role && role === 'admin') {
-    router.addRoute('Home', manageRoute);
+    router.addRoute('Home', manageRoutes[0]);
     /* 防止页面刷新，路由丢失 */
     if (newVal.fullPath === '/home/manage') {
       await router.replace('/home/manage');

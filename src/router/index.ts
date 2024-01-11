@@ -3,9 +3,10 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 // 引入 common.ts
 import CommonRouter from './modules/common';
 import ManageRouter from './modules/manage';
+import ExampleRouter from './modules/examples';
 import { useUserStore } from '@/store/user';
 
-export const publicRoutes: Array<RouteRecordRaw> = [...CommonRouter, ...ManageRouter];
+export const publicRoutes: Array<RouteRecordRaw> = [...CommonRouter, ...ManageRouter, ...ExampleRouter];
 
 const router = createRouter({
   history: createWebHistory(), //可传参数，配置base路径，例如'/app'
