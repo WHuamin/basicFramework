@@ -7,7 +7,21 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BasicCheckboxGroup: typeof import('./src/components/form/basicCheckboxGroup.vue')['default']
     BasicForm: typeof import('./src/components/form/basicForm.vue')['default']
+    BasicRadioGroup: typeof import('./src/components/form/basicRadioGroup.vue')['default']
+    BasicSelect: typeof import('./src/components/form/basicSelect.vue')['default']
+    BasicTextInput: typeof import('./src/components/form/basicTextInput.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElOption: typeof import('element-plus/es')['ElOption']
+    ElRadio: typeof import('element-plus/es')['ElRadio']
+    ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
